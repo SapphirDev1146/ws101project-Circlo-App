@@ -12,7 +12,7 @@ $host = getenv('CIRCLO_DB_HOST') ?: '127.0.0.1';
 $port = getenv('CIRCLO_DB_PORT') ?: '3306';
 $dbname = getenv('CIRCLO_DB_NAME') ?: 'circlo_db';
 $username = getenv('CIRCLO_DB_USER') ?: 'root';
-$password = getenv('CIRCLO_DB_PASS') !== false ? getenv('CIRCLO_DB_PASS') : 'mrk_angloA026';
+$password = getenv('CIRCLO_DB_PASS') !== false ? getenv('CIRCLO_DB_PASS') : ''; // Password sa inyong local root sa database
 
 $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
 
