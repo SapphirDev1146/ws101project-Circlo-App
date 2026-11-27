@@ -1,0 +1,4 @@
+logs/*.log
+config/local.php
+.env
+.DS_Store
