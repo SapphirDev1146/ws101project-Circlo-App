@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disaster help · Circlo</title>
+  <meta name="description" content="See what families nearby need after a flood or fire, and offer what you can.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link is-active" aria-current="page" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+
+      <div class="page-head page-head--split">
+        <div class="page-head__text">
+          <p class="eyebrow eyebrow--needs">Disaster help</p>
+          <h1>Disaster help</h1>
+          <p class="lead">See what families nearby need after a disaster, and offer what you can.</p>
+        </div>
+        <div class="page-head__actions">
+          <a class="btn btn--amber" href="report-incident.html">Report incident</a>
+          <a class="btn btn--secondary" href="ask-for-help.html">Ask for help</a>
+        </div>
+      </div>
+
+      <form class="toolbar" role="search" action="disaster-help.html" method="get" aria-label="Search needs" data-filter-form="needs-list">
+        <div class="field toolbar__search">
+          <label class="field__label" for="q">Search needs</label>
+          <input class="field__input" type="search" id="q" name="q" placeholder="e.g. Blankets">
+        </div>
+        <div class="field toolbar__filter">
+          <label class="field__label" for="type">Type</label>
+          <select class="field__input" id="type" name="type">
+            <option value="">All types</option>
+            <option value="flood">Flood</option>
+            <option value="fire">Fire</option>
+            <option value="typhoon">Typhoon</option>
+            <option value="earthquake">Earthquake</option>
+          </select>
+        </div>
+        <div class="field toolbar__filter">
+          <label class="field__label" for="urgency">Urgency</label>
+          <select class="field__input" id="urgency" name="urgency">
+            <option value="">All urgency levels</option>
+            <option value="high">High urgency</option>
+            <option value="medium">Medium urgency</option>
+            <option value="low">Low urgency</option>
+          </select>
+        </div>
+        <div class="field toolbar__filter">
+          <label class="field__label" for="location">Location</label>
+          <select class="field__input" id="location" name="location">
+            <option value="">All locations</option>
+            <option value="zone-1">Zone 1</option>
+            <option value="zone-2">Zone 2</option>
+            <option value="zone-3">Zone 3</option>
+            <option value="zone-4">Zone 4</option>
+            <option value="zone-5">Zone 5</option>
+          </select>
+        </div>
+        <button class="btn btn--secondary" type="submit">Search</button>
+      </form>
+
+      <h2 class="visually-hidden" id="needs-title">Open needs</h2>
+      <p class="visually-hidden" role="status" data-filter-status="needs-list"></p>
+      <ul class="grid-needs" id="needs-list" aria-labelledby="needs-title" data-filter-list data-filter-noun="need">
+        <li data-type="flood" data-urgency="high" data-location="zone-3">
+          <article class="need-card">
+            <span class="badge badge--danger">High urgency</span>
+            <h3 id="need-1">Food containers for evacuees</h3>
+            <p class="need-card__details">Flood · 20 people affected · Needs 40 containers</p>
+            <a class="btn btn--amber" href="offer-donation.html" aria-describedby="need-1">Offer help</a>
+          </article>
+        </li>
+        <li data-type="typhoon" data-urgency="high" data-location="zone-1">
+          <article class="need-card">
+            <span class="badge badge--danger">High urgency</span>
+            <h3 id="need-2">Drinking water for 15 households</h3>
+            <p class="need-card__details">Typhoon · 15 households affected · Needs 60 gallons</p>
+            <a class="btn btn--amber" href="offer-donation.html" aria-describedby="need-2">Offer help</a>
+          </article>
+        </li>
+        <li data-type="fire" data-urgency="medium" data-location="zone-2">
+          <article class="need-card">
+            <span class="badge badge--warning">Medium urgency</span>
+            <h3 id="need-3">Blankets for a family of 8</h3>
+            <p class="need-card__details">Fire · 8 people affected · Needs 10 blankets</p>
+            <a class="btn btn--amber" href="offer-donation.html" aria-describedby="need-3">Offer help</a>
+          </article>
+        </li>
+        <li data-type="flood" data-urgency="medium" data-location="zone-3">
+          <article class="need-card">
+            <span class="badge badge--warning">Medium urgency</span>
+            <h3 id="need-4">Hygiene kits for the evacuation center</h3>
+            <p class="need-card__details">Flood · 30 people affected · Needs 30 hygiene kits</p>
+            <a class="btn btn--amber" href="offer-donation.html" aria-describedby="need-4">Offer help</a>
+          </article>
+        </li>
+        <li data-type="flood" data-urgency="low" data-location="zone-4">
+          <article class="need-card">
+            <span class="badge badge--neutral">Low urgency</span>
+            <h3 id="need-5">School supplies for children</h3>
+            <p class="need-card__details">Flood · 12 children affected · Needs 12 school kits</p>
+            <a class="btn btn--amber" href="offer-donation.html" aria-describedby="need-5">Offer help</a>
+          </article>
+        </li>
+        <li data-type="fire" data-urgency="low" data-location="zone-5">
+          <article class="need-card">
+            <span class="badge badge--neutral">Low urgency</span>
+            <h3 id="need-6">Mattresses for a family of 5</h3>
+            <p class="need-card__details">Fire · 5 people affected · Needs 3 mattresses</p>
+            <a class="btn btn--amber" href="offer-donation.html" aria-describedby="need-6">Offer help</a>
+          </article>
+        </li>
+      </ul>
+
+      <div class="empty-state" data-filter-empty="needs-list" hidden>
+        <p class="lead">No needs match your search.</p>
+        <a class="btn btn--secondary" href="disaster-help.html">Clear filters</a>
+      </div>
+
+      <nav class="pagination" aria-label="Pagination">
+        <ul class="pagination__list">
+          <li><span class="pagination__link" aria-disabled="true">‹ Previous</span></li>
+          <li><a class="pagination__link" href="disaster-help.html?page=1" aria-current="page" aria-label="Page 1">1</a></li>
+          <li><a class="pagination__link" href="disaster-help.html?page=2" aria-label="Page 2">2</a></li>
+          <li><a class="pagination__link" href="disaster-help.html?page=3" aria-label="Page 3">3</a></li>
+          <li><a class="pagination__link" href="disaster-help.html?page=2">Next ›</a></li>
+        </ul>
+      </nav>
+
+      <p class="section-note">Circlo is not an emergency response service. If someone is in danger, call your local emergency number first.</p>
+
+    </div>
+  </main>
+
+  <script src="../js/list-filter.js"></script>
+</body>
+</html>

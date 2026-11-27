@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Remove item · Circlo</title>
+  <meta name="description" content="Confirm that you want to remove an item you shared.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: My activity -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link is-active" aria-current="page" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M8 Remove item — Confirm template (DESIGN.md 6.2, 8.8). CRUD: Delete (soft:
+       the item is hidden, the record is kept). After removing: My items with
+       "Item removed." (flow 4.3, 9.2). Sample item until data storage is decided (12.4 #1). -->
+  <main id="main" class="page">
+    <div class="container">
+      <section class="confirm-panel" aria-labelledby="remove-title">
+
+        <div class="confirm-panel__head">
+          <p class="eyebrow">My activity</p>
+          <h1 id="remove-title">Remove this item?</h1>
+        </div>
+
+        <div class="confirm-panel__summary">
+          <span class="confirm-panel__item">Study table</span>
+          <span>To give · Zone 3</span>
+          <span class="badge badge--success">Available</span>
+        </div>
+
+        <p class="lead">It will be hidden from Browse items. Your record is kept.</p>
+
+        <!-- Backend: POST field "item_id". Set the item's status to Hidden (9.3).
+             data-demo-next is for the front-end demo only: remove it when the backend hides the item. -->
+        <form class="form__actions" action="remove-item.html" method="post"
+              data-validate data-demo-next="my-items.html?done=removed">
+          <input type="hidden" name="item_id" value="1">
+          <button class="btn btn--danger" type="submit" data-loading-label="Removing…">Remove item</button>
+          <a class="btn btn--secondary" href="my-items.html">Cancel</a>
+        </form>
+
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/form-validate.js"></script>
+</body>
+</html>

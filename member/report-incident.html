@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report an incident · Circlo</title>
+  <meta name="description" content="Tell your neighbors about a flood, fire or other disaster nearby.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: Disaster help -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link is-active" aria-current="page" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M12 Report incident — Form template (DESIGN.md 6.2, 8.5). CRUD: Create.
+       Disaster form: amber eyebrow and Amber main button (8.5).
+       After reporting: Donations and reports, status Reported (flow 4.5, 9.3). -->
+  <main id="main" class="page">
+    <div class="container">
+
+      <a class="back-link" href="disaster-help.html"><span aria-hidden="true">←</span> Back to Disaster help</a>
+
+      <div class="page-head">
+        <p class="eyebrow eyebrow--needs">Disaster help</p>
+        <h1>Report an incident</h1>
+        <p class="lead">Tell neighbors what happened so help can be organized.</p>
+      </div>
+
+      <!-- Required note (DESIGN.md 7.2): members have no footer. Info alert (7.12). -->
+      <div class="alert" role="note">
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 9v5M10 6h.01"/></svg>
+        <p>Circlo is not an emergency response service. If someone is in danger, call your local emergency number first.</p>
+      </div>
+
+      <div class="alert alert--error" role="alert" data-error-summary hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="alert__body">
+          <p class="alert__title"></p>
+          <ul class="alert__list"></ul>
+        </div>
+      </div>
+
+      <!-- Backend: POST fields "incident_type", "location", "incident_date",
+           "people_affected", "description" and "photo" (file: multipart/form-data).
+           Type and zone values are samples (DESIGN.md 12.4 #7).
+           data-demo-next is for the front-end demo only: remove it when the backend saves the report. -->
+      <form class="form" action="report-incident.html" method="post" enctype="multipart/form-data"
+            data-validate data-demo-next="donations-reports.html?done=reported">
+
+        <div class="field">
+          <label class="field__label" for="incident-type">Type of incident (required)</label>
+          <select class="field__input" id="incident-type" name="incident_type" required
+                  aria-describedby="incident-type-error"
+                  data-error-required="Choose what kind of incident it is.">
+            <option value="">Select a type</option>
+            <option value="flood">Flood</option>
+            <option value="fire">Fire</option>
+            <option value="typhoon">Typhoon</option>
+            <option value="earthquake">Earthquake</option>
+            <option value="other">Other</option>
+          </select>
+          <p class="field__error" id="incident-type-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="location">Location (required)</label>
+          <select class="field__input" id="location" name="location" required
+                  aria-describedby="location-error"
+                  data-error-required="Choose where it happened.">
+            <option value="">Select a zone</option>
+            <option value="zone-1">Zone 1</option>
+            <option value="zone-2">Zone 2</option>
+            <option value="zone-3">Zone 3</option>
+            <option value="zone-4">Zone 4</option>
+            <option value="zone-5">Zone 5</option>
+          </select>
+          <p class="field__error" id="location-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="incident-date">When it happened (required)</label>
+          <input class="field__input" type="date" id="incident-date" name="incident_date" required
+                 aria-describedby="incident-date-error"
+                 data-error-required="Enter the date it happened.">
+          <p class="field__error" id="incident-date-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="people-affected">People affected</label>
+          <input class="field__input" type="number" id="people-affected" name="people_affected"
+                 min="1" max="9999" inputmode="numeric"
+                 aria-describedby="people-affected-help people-affected-error"
+                 data-error-range="Enter a number from 1 to 9999.">
+          <p class="field__help" id="people-affected-help">Optional. Your best guess is fine.</p>
+          <p class="field__error" id="people-affected-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field field--long">
+          <label class="field__label" for="description">What happened (required)</label>
+          <textarea class="field__input" id="description" name="description" required maxlength="1000"
+                    aria-describedby="description-help description-error"
+                    data-error-required="Describe what happened."
+                    placeholder="e.g. Floodwater reached knee height on Mabini Street. Six houses are flooded."></textarea>
+          <p class="field__help" id="description-help">Say what you saw, where exactly, and what people need most.</p>
+          <p class="field__error" id="description-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="photo">Photo</label>
+          <input class="field__input" type="file" id="photo" name="photo" accept="image/jpeg,image/png"
+                 aria-describedby="photo-help">
+          <p class="field__help" id="photo-help">Optional. A JPG or PNG photo, only if it's safe to take one.</p>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--amber" type="submit" data-loading-label="Sending report…">Report incident</button>
+          <a class="btn btn--secondary" href="disaster-help.html">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <script src="../js/form-validate.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study table · Circlo</title>
+  <meta name="description" content="A study table a neighbor is giving away in Zone 3.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><img src="assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="index.html">Home</a>
+      <a class="site-nav__link is-active" aria-current="page" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="site-nav__link" href="login.html">Log in</a>
+      <a class="btn btn--primary" href="signup.html">Sign up</a>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+
+      <a class="back-link" href="browse.html"><span aria-hidden="true">←</span> Back to Browse items</a>
+
+      <div class="detail">
+        <div class="detail-photo" role="img" aria-label="Photo coming soon"></div>
+
+        <section class="info-panel" aria-labelledby="item-title">
+          <div class="info-panel__head">
+            <p class="eyebrow">Everyday sharing</p>
+            <h1 id="item-title">Study table</h1>
+          </div>
+          <span class="badge badge--success">Available</span>
+          <p>To give · Zone 3 · Qty 1</p>
+          <p class="lead">A sturdy wooden study table with one drawer, ready for a new home.</p>
+          <p class="info-panel__note">Posted by Maria · 25 Nov 2026</p>
+
+          <a class="btn btn--primary" href="login.html">Request this item</a>
+          <p class="info-panel__note">You'll be asked to log in first.</p>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <svg class="site-footer__rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="200" cy="200" r="70"/><circle cx="200" cy="200" r="115"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/></svg>
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="logo logo--on-dark" href="index.html">
+            <span class="logo__mark"><img src="assets/logo/logo.png" alt="" width="30" height="30"></span>
+            <span class="logo__text">Circlo</span>
+          </a>
+          <p class="site-footer__tagline">Sharing and disaster help for your neighborhood.</p>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 class="site-footer__heading" id="footer-explore">Explore</h2>
+          <ul class="site-footer__nav">
+            <li><a class="site-footer__link" href="index.html">Home</a></li>
+            <li><a class="site-footer__link" href="browse.html">Browse items</a></li>
+            <li><a class="site-footer__link" href="disaster-help.html">Disaster help</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-account">
+          <h2 class="site-footer__heading" id="footer-account">Your account</h2>
+          <ul class="site-footer__nav">
+            <li><a class="site-footer__link" href="login.html">Log in</a></li>
+            <li><a class="site-footer__link" href="signup.html">Sign up</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__note">
+          <svg class="site-footer__note-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4.5M10 13.75v.01"/></svg>
+          <p><strong>Circlo is not an emergency response service.</strong> If someone is in danger, call your local emergency number first.</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <p>© 2026 Circlo · A WS 101 community project</p>
+        <a class="site-footer__link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

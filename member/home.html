@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home · Circlo</title>
+  <meta name="description" content="Your Circlo home: your numbers, requests to answer, needs nearby and new items.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <script src="../js/form-validate.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: Home -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link is-active" aria-current="page" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M1 Member home — dashboard (DESIGN.md 6.2, 8.2b): sidebar card | numbers,
+       incoming requests, needs nearby and recent updates; then new items.
+       Sample data until data storage is decided (12.4 #1). No footer (7.2). -->
+  <main id="main">
+    <div class="container">
+
+      <section class="welcome" aria-labelledby="welcome-title">
+        <p class="eyebrow">My activity</p>
+        <h1 id="welcome-title" class="welcome__title">Welcome back, Maria.</h1>
+        <p class="welcome__summary">You have <a href="requests.html">2 requests to answer</a> and <a href="donations-reports.html">1 report update</a>.</p>
+      </section>
+
+      <div class="member-layout">
+
+        <aside class="member-sidebar" aria-label="Your account">
+          <div class="profile">
+            <span class="profile__avatar" aria-hidden="true">MS</span>
+            <div class="profile__text">
+              <p class="profile__name">Maria Santos</p>
+              <p class="profile__role">Member · Zone 3 <span class="badge badge--success">Active</span></p>
+            </div>
+          </div>
+
+          <nav aria-labelledby="member-nav-activity">
+            <p class="member-nav__label" id="member-nav-activity">My activity</p>
+            <ul class="member-nav__list">
+              <li>
+                <a class="member-nav__link" href="home.html" aria-current="page">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>
+                  <span class="member-nav__text">Overview</span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link" href="requests.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5V15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3.5"/><path d="M10 3v9M6.5 8.5 10 12l3.5-3.5"/></svg>
+                  <span class="member-nav__text">Incoming requests</span>
+                  <span class="member-nav__count"><span class="visually-hidden">(</span>2<span class="visually-hidden"> waiting)</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link" href="requests.html#sent-title">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5V15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3.5"/><path d="M10 12V3M6.5 6.5 10 3l3.5 3.5"/></svg>
+                  <span class="member-nav__text">My outgoing requests</span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link" href="handover.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11l-3-3M17 13H6l3 3"/></svg>
+                  <span class="member-nav__text">Handovers</span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link" href="my-items.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5 17 6v8l-7 3.5L3 14V6l7-3.5z"/><path d="M3 6l7 3.5L17 6M10 9.5v8"/></svg>
+                  <span class="member-nav__text">My items</span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link" href="donations-reports.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16.5S3 12.4 3 7.75A3.75 3.75 0 0 1 10 5.9a3.75 3.75 0 0 1 7 1.85c0 4.65-7 8.75-7 8.75z"/></svg>
+                  <span class="member-nav__text">Donations and reports</span>
+                  <span class="member-nav__count"><span class="visually-hidden">(</span>1<span class="visually-hidden"> update)</span></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="member-nav-quick">
+            <p class="member-nav__label" id="member-nav-quick">Quick links</p>
+            <ul class="member-nav__list">
+              <li>
+                <a class="member-nav__link" href="post-item.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M10 6.5v7M6.5 10h7"/></svg>
+                  <span class="member-nav__text">Post an item</span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link member-nav__link--needs" href="report-incident.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 2.5 16.5h15L10 3z"/><path d="M10 8.5v3.5M10 14.25v.01"/></svg>
+                  <span class="member-nav__text">Report an incident</span>
+                </a>
+              </li>
+              <li>
+                <a class="member-nav__link member-nav__link--needs" href="ask-for-help.html">
+                  <svg class="member-nav__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><path d="M7.75 7.75a2.25 2.25 0 1 1 3 2.12c-.45.17-.75.6-.75 1.08v.55M10 13.75v.01"/></svg>
+                  <span class="member-nav__text">Ask for help</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="member-main">
+
+          <section aria-labelledby="numbers-title">
+            <h2 id="numbers-title" class="visually-hidden">Your numbers</h2>
+            <ul class="grid-stats">
+              <li>
+                <a class="stat-card stat-card--edge" href="my-items.html">
+                  <span class="stat-card__label">My listings</span>
+                  <span class="stat-card__number">4</span>
+                  <span class="stat-card__note">See my items <span class="link__arrow" aria-hidden="true">→</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="stat-card stat-card--edge" href="requests.html">
+                  <span class="stat-card__label">Pending requests</span>
+                  <span class="stat-card__number">2</span>
+                  <span class="stat-card__note">Waiting on you <span class="link__arrow" aria-hidden="true">→</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="stat-card stat-card--edge" href="handover.html">
+                  <span class="stat-card__label">Handover records</span>
+                  <span class="stat-card__number">6</span>
+                  <span class="stat-card__note">See handovers <span class="link__arrow" aria-hidden="true">→</span></span>
+                </a>
+              </li>
+              <li>
+                <a class="stat-card stat-card--edge stat-card--needs" href="donations-reports.html">
+                  <span class="stat-card__label">Donation offers</span>
+                  <span class="stat-card__number">3</span>
+                  <span class="stat-card__note">See donations <span class="link__arrow" aria-hidden="true">→</span></span>
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Backend: each Accept / Decline form posts "request_id" and "decision"
+               (accept | decline), like M9. data-demo-next is for the front-end demo only. -->
+          <section class="panel" aria-labelledby="incoming-title">
+            <div class="page-head page-head--split">
+              <div class="page-head__text">
+                <h2 id="incoming-title">Incoming item requests</h2>
+                <p class="lead">Accept to reserve the item for that neighbor, or decline.</p>
+              </div>
+              <a class="link" href="requests.html">See all requests <span class="link__arrow" aria-hidden="true">→</span></a>
+            </div>
+            <div class="table-wrap">
+              <table class="table" aria-labelledby="incoming-title">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Requested by</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="table__primary">Electric fan</td>
+                    <td><span class="person"><span class="person__avatar" aria-hidden="true">AC</span>Ana Cruz</span></td>
+                    <td>1</td>
+                    <td class="table__note">“Can I borrow it for two weeks? Our fan broke.”</td>
+                    <td><span class="badge badge--warning">Pending</span></td>
+                    <td>
+                      <div class="table__actions">
+                        <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=accepted">
+                          <input type="hidden" name="request_id" value="1">
+                          <input type="hidden" name="decision" value="accept">
+                          <button class="btn btn--primary btn--sm" type="submit" data-loading-label="Accepting…" aria-label="Accept Ana Cruz's request for your Electric fan">Accept</button>
+                        </form>
+                        <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=declined">
+                          <input type="hidden" name="request_id" value="1">
+                          <input type="hidden" name="decision" value="decline">
+                          <button class="btn btn--secondary btn--sm" type="submit" data-loading-label="Declining…" aria-label="Decline Ana Cruz's request for your Electric fan">Decline</button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table__primary">Study table</td>
+                    <td><span class="person"><span class="person__avatar" aria-hidden="true">JR</span>Jun Reyes</span></td>
+                    <td>1</td>
+                    <td class="table__note">“For my son's schoolwork. I can pick it up this weekend.”</td>
+                    <td><span class="badge badge--warning">Pending</span></td>
+                    <td>
+                      <div class="table__actions">
+                        <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=accepted">
+                          <input type="hidden" name="request_id" value="2">
+                          <input type="hidden" name="decision" value="accept">
+                          <button class="btn btn--primary btn--sm" type="submit" data-loading-label="Accepting…" aria-label="Accept Jun Reyes's request for your Study table">Accept</button>
+                        </form>
+                        <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=declined">
+                          <input type="hidden" name="request_id" value="2">
+                          <input type="hidden" name="decision" value="decline">
+                          <button class="btn btn--secondary btn--sm" type="submit" data-loading-label="Declining…" aria-label="Decline Jun Reyes's request for your Study table">Decline</button>
+                        </form>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="table__primary">Plastic chairs, set of 4</td>
+                    <td><span class="person"><span class="person__avatar" aria-hidden="true">ER</span>Elena Ramos</span></td>
+                    <td>4</td>
+                    <td class="table__note">“I can pick them up Saturday morning at the barangay hall.”</td>
+                    <td><span class="badge badge--success">Accepted</span></td>
+                    <td>
+                      <div class="table__actions">
+                        <a class="btn btn--secondary btn--sm" href="handover.html" aria-label="Record the handover of your Plastic chairs to Elena Ramos">Record handover</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <div class="member-split">
+            <section class="panel panel--needs" aria-labelledby="needs-title">
+              <div class="page-head page-head--split">
+                <div class="page-head__text">
+                  <p class="eyebrow eyebrow--needs">Disaster help</p>
+                  <h2 id="needs-title">Neighbors need help now</h2>
+                </div>
+                <a class="link link--needs" href="disaster-help.html">See all <span class="link__arrow" aria-hidden="true">→</span></a>
+              </div>
+              <ul class="attention-list">
+                <li class="attention-list__row">
+                  <p class="attention-list__text">
+                    <span class="badge badge--danger">High urgency</span>
+                    <span>Food containers for evacuees</span>
+                    <span class="attention-list__meta">Flood · Needs 40 containers</span>
+                  </p>
+                  <a class="link link--needs" href="offer-donation.html" aria-label="Offer help: Food containers for evacuees">Offer help</a>
+                </li>
+                <li class="attention-list__row">
+                  <p class="attention-list__text">
+                    <span class="badge badge--warning">Medium urgency</span>
+                    <span>Blankets for a family of 8</span>
+                    <span class="attention-list__meta">Fire · Needs 10 blankets</span>
+                  </p>
+                  <a class="link link--needs" href="offer-donation.html" aria-label="Offer help: Blankets for a family of 8">Offer help</a>
+                </li>
+                <li class="attention-list__row">
+                  <p class="attention-list__text">
+                    <span class="badge badge--neutral">Low urgency</span>
+                    <span>School supplies for children</span>
+                    <span class="attention-list__meta">Flood · Needs 12 school kits</span>
+                  </p>
+                  <a class="link link--needs" href="offer-donation.html" aria-label="Offer help: School supplies for children">Offer help</a>
+                </li>
+              </ul>
+              <p class="section-note">Circlo is not an emergency response service. If someone is in danger, call your local emergency number first.</p>
+            </section>
+
+            <section class="panel" aria-labelledby="updates-title">
+              <div class="page-head page-head--split">
+                <div class="page-head__text">
+                  <p class="eyebrow">My activity</p>
+                  <h2 id="updates-title">Recent updates</h2>
+                </div>
+                <a class="link" href="donations-reports.html">See all <span class="link__arrow" aria-hidden="true">→</span></a>
+              </div>
+              <ul class="attention-list">
+                <li class="attention-list__row">
+                  <p class="attention-list__text">
+                    <span>Your flood report for Zone 3 was verified.</span>
+                    <span class="attention-list__meta">Incident report · 24 Nov 2026</span>
+                  </p>
+                  <span class="badge badge--success">Verified</span>
+                </li>
+                <li class="attention-list__row">
+                  <p class="attention-list__text">
+                    <span>You gave your Rice cooker to Liza Ramos.</span>
+                    <span class="attention-list__meta">Handover · 22 Nov 2026</span>
+                  </p>
+                  <span class="badge badge--neutral">Given</span>
+                </li>
+                <li class="attention-list__row">
+                  <p class="attention-list__text">
+                    <span>Your offer of 5 blankets is waiting for review.</span>
+                    <span class="attention-list__meta">Donation offer · 21 Nov 2026</span>
+                  </p>
+                  <span class="badge badge--warning">Pending</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <section class="section section--soft" aria-labelledby="items-title">
+      <div class="container">
+        <div class="page-head page-head--split">
+          <div class="page-head__text">
+            <p class="eyebrow">Everyday sharing</p>
+            <h2 id="items-title">New from your neighbors</h2>
+            <p class="lead">Things your neighbors are ready to give or lend.</p>
+          </div>
+          <a class="link" href="browse.html">Browse items <span class="link__arrow" aria-hidden="true">→</span></a>
+        </div>
+        <ul class="grid-items">
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Rice cooker</h3>
+                <p class="item-card__meta">To give · Zone 2</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Kids' raincoats, set of 3</h3>
+                <p class="item-card__meta">To give · Zone 5</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Folding camp cots, set of 2</h3>
+                <p class="item-card__meta">To lend · Zone 2</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Power drill</h3>
+                <p class="item-card__meta">To lend · Zone 1</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

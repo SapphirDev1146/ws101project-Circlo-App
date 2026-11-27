@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Circlo · Share what you can, find what you need</title>
+  <meta name="description" content="Circlo helps neighbors give, lend and borrow reusable items, and organize donations after a disaster.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><img src="assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link is-active" aria-current="page" href="index.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="site-nav__link" href="login.html">Log in</a>
+      <a class="btn btn--primary" href="signup.html">Sign up</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- V1 Home — Marketing template (DESIGN.md 6.2, 8.2) -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__content" data-enter>
+          <p class="hero__kicker">
+            <span class="hero__dot" aria-hidden="true"></span>Everyday sharing
+            <span class="hero__dot hero__dot--needs" aria-hidden="true"></span>Disaster help
+          </p>
+          <h1 id="hero-title" class="hero__title">Share what you can.<br>Find what you
+            <span class="hero__title-accent">need.<svg class="hero__scribble" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 11C52 4 126 2 197 8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="lead">Give, lend and borrow reusable things with the people on your street, and help each other when a flood or fire hits.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="signup.html">Create an account</a>
+            <a class="btn btn--secondary" href="browse.html">Browse items</a>
+          </div>
+          <!-- Sample numbers (DESIGN.md 12.4 #4) -->
+          <ul class="hero__stats" aria-label="Circlo so far">
+            <li class="hero__stat"><span class="hero__stat-number">120+</span>items shared</li>
+            <li class="hero__stat"><span class="hero__stat-number">340</span>neighbors</li>
+            <li class="hero__stat"><span class="hero__stat-number">8</span>open needs</li>
+          </ul>
+        </div>
+
+        <div class="hero__visual">
+          <svg class="hero__rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="200" cy="200" r="90"/><circle cx="200" cy="200" r="130"/><circle cx="200" cy="200" r="168"/><circle cx="200" cy="200" r="198"/></svg>
+          <img class="hero__photo" src="assets/images/people-home.png" width="736" height="488"
+               alt="A group of smiling children huddled together, looking down at the camera">
+
+          <!-- Decorative previews of the cards below -->
+          <div class="hero-preview hero-preview--need" aria-hidden="true">
+            <span class="hero-preview__thumb">
+              <svg viewBox="0 0 20 20" width="22" height="22" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h11a3 3 0 0 1 3 3v7H6a3 3 0 0 1-3-3V5z"/><path d="M3 9h14"/></svg>
+            </span>
+            <span class="hero-preview__text">
+              <span class="hero-preview__title">Blankets for a family of 8</span>
+              <span class="hero-preview__meta">Fire · Needs 10 blankets</span>
+            </span>
+          </div>
+          <div class="hero-preview hero-preview--item" aria-hidden="true">
+            <span class="hero-preview__thumb">
+              <svg viewBox="0 0 20 20" width="22" height="22" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5h15M4.5 7.5v8M15.5 7.5v8M6 11h8"/></svg>
+            </span>
+            <span class="hero-preview__text">
+              <span class="hero-preview__title">Study table</span>
+              <span class="hero-preview__meta">To give · Zone 3</span>
+            </span>
+            <span class="badge badge--success">Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ways-title">
+      <div class="container">
+        <div class="page-head">
+          <p class="eyebrow">About Circlo</p>
+          <h2 id="ways-title">Two ways to help your circle</h2>
+          <p class="lead">Share everyday things, or step in when a disaster hits.</p>
+        </div>
+        <ul class="grid-features">
+          <li>
+            <article class="feature-card">
+              <p class="eyebrow">Everyday sharing</p>
+              <h3>Give, lend and borrow</h3>
+              <p>Post things you no longer use, or find what you need from people nearby. Every item shows its status, so you know what's free.</p>
+              <ul class="feature-card__list" aria-label="Examples of shared items">
+                <li class="feature-card__row">
+                  <span class="feature-card__glyph" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 7.5h15M4.5 7.5v8M15.5 7.5v8M6 11h8"/></svg></span>
+                  <span class="feature-card__text"><span class="feature-card__name">Study table</span><span class="feature-card__meta">To give · Zone 3</span></span>
+                  <span class="badge badge--success">Available</span>
+                </li>
+                <li class="feature-card__row">
+                  <span class="feature-card__glyph" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8.5" r="5.5"/><circle cx="10" cy="8.5" r="1"/><path d="M10 14v3.5M6.5 17.5h7"/></svg></span>
+                  <span class="feature-card__text"><span class="feature-card__name">Electric fan</span><span class="feature-card__meta">To lend · Zone 1</span></span>
+                  <span class="badge badge--warning">Reserved</span>
+                </li>
+                <li class="feature-card__row">
+                  <span class="feature-card__glyph" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h12v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V8z"/><path d="M3 8h14M8 5.5h4"/></svg></span>
+                  <span class="feature-card__text"><span class="feature-card__name">Rice cooker</span><span class="feature-card__meta">To give · Zone 2</span></span>
+                  <span class="badge badge--success">Available</span>
+                </li>
+              </ul>
+              <a class="link" href="browse.html">Browse items <span class="link__arrow" aria-hidden="true">→</span></a>
+            </article>
+          </li>
+          <li>
+            <article class="feature-card feature-card--needs">
+              <p class="eyebrow eyebrow--needs">Disaster help</p>
+              <h3>Help after a disaster</h3>
+              <p>See what families need after a flood or fire, and offer what you can. The most urgent needs are marked so they're answered first.</p>
+              <ul class="feature-card__list" aria-label="Examples of needs">
+                <li class="feature-card__row">
+                  <span class="feature-card__glyph" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="13" height="8.5" rx="1.5"/><path d="M2.5 5.5h15V8h-15zM8 11h4"/></svg></span>
+                  <span class="feature-card__text"><span class="feature-card__name">Food containers</span><span class="feature-card__meta">Flood · Needs 40</span></span>
+                  <span class="badge badge--danger">High urgency</span>
+                </li>
+                <li class="feature-card__row">
+                  <span class="feature-card__glyph" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h11a3 3 0 0 1 3 3v7H6a3 3 0 0 1-3-3V5z"/><path d="M3 9h14"/></svg></span>
+                  <span class="feature-card__text"><span class="feature-card__name">Blankets</span><span class="feature-card__meta">Fire · Needs 10</span></span>
+                  <span class="badge badge--warning">Medium urgency</span>
+                </li>
+                <li class="feature-card__row">
+                  <span class="feature-card__glyph" aria-hidden="true"><svg viewBox="0 0 20 20" width="20" height="20" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5h9.5a2 2 0 0 1 2 2V16H6a2 2 0 0 1-2-2V4.5z"/><path d="M4 13.5a2 2 0 0 1 2-2h9.5"/></svg></span>
+                  <span class="feature-card__text"><span class="feature-card__name">School kits</span><span class="feature-card__meta">Flood · Needs 12</span></span>
+                  <span class="badge badge--neutral">Low urgency</span>
+                </li>
+              </ul>
+              <a class="link link--needs" href="disaster-help.html">See disaster help <span class="link__arrow" aria-hidden="true">→</span></a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="items-title">
+      <div class="container">
+        <div class="page-head page-head--split">
+          <div class="page-head__text">
+            <p class="eyebrow">Everyday sharing</p>
+            <h2 id="items-title">New from your neighbors</h2>
+            <p class="lead">Things your neighbors are ready to give or lend.</p>
+          </div>
+          <a class="link" href="browse.html">Browse all items <span class="link__arrow" aria-hidden="true">→</span></a>
+        </div>
+        <ul class="grid-items">
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Study table</h3>
+                <p class="item-card__meta">To give · Zone 3</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Electric fan</h3>
+                <p class="item-card__meta">To lend · Zone 1</p>
+                <span class="badge badge--warning">Reserved</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Rice cooker</h3>
+                <p class="item-card__meta">To give · Zone 2</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="item-card" href="item.html">
+              <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+              <div class="item-card__body">
+                <h3 class="item-card__title">Kids' raincoats, set of 3</h3>
+                <p class="item-card__meta">To give · Zone 5</p>
+                <span class="badge badge--success">Available</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--needs" aria-labelledby="needs-title">
+      <div class="container">
+        <div class="page-head page-head--split">
+          <div class="page-head__text">
+            <p class="eyebrow eyebrow--needs">Disaster help</p>
+            <h2 id="needs-title">Neighbors need help now</h2>
+            <p class="lead">Families nearby need these items. Log in to offer help.</p>
+          </div>
+          <a class="link link--needs" href="disaster-help.html">See all needs <span class="link__arrow" aria-hidden="true">→</span></a>
+        </div>
+        <ul class="grid-needs">
+          <li>
+            <article class="need-card">
+              <span class="badge badge--danger">High urgency</span>
+              <h3 id="need-1">Food containers for evacuees</h3>
+              <p class="need-card__details">Flood · 20 people affected · Needs 40 containers</p>
+              <a class="btn btn--amber" href="login.html" aria-describedby="need-1">Offer help</a>
+            </article>
+          </li>
+          <li>
+            <article class="need-card">
+              <span class="badge badge--warning">Medium urgency</span>
+              <h3 id="need-2">Blankets for a family of 8</h3>
+              <p class="need-card__details">Fire · 8 people affected · Needs 10 blankets</p>
+              <a class="btn btn--amber" href="login.html" aria-describedby="need-2">Offer help</a>
+            </article>
+          </li>
+          <li>
+            <article class="need-card">
+              <span class="badge badge--neutral">Low urgency</span>
+              <h3 id="need-3">School supplies for children</h3>
+              <p class="need-card__details">Flood · 12 children affected · Needs 12 school kits</p>
+              <a class="btn btn--amber" href="login.html" aria-describedby="need-3">Offer help</a>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="how-title">
+      <div class="container">
+        <div class="page-head">
+          <p class="eyebrow">Getting started</p>
+          <h2 id="how-title">How it works</h2>
+          <p class="lead">Three steps from sign-up to handover.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__number" aria-hidden="true">1</span>
+            <h3>Sign up</h3>
+            <p>Create a free account with your email. It takes a minute.</p>
+          </li>
+          <li class="step">
+            <span class="step__number" aria-hidden="true">2</span>
+            <h3>Post or request</h3>
+            <p>Share something you don't use, or ask for an item you need.</p>
+          </li>
+          <li class="step">
+            <span class="step__number" aria-hidden="true">3</span>
+            <h3>Meet and hand over</h3>
+            <p>Agree on a time and place, then record the handover.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="join-title">
+      <div class="container">
+        <div class="cta-band">
+          <svg class="cta-band__rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="200" cy="200" r="70"/><circle cx="200" cy="200" r="115"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/></svg>
+          <div class="cta-band__text">
+            <h2 id="join-title">Ready to join your circle?</h2>
+            <p class="lead">Sign up to share, borrow and help your neighbors. It's free.</p>
+          </div>
+          <a class="btn btn--light" href="signup.html">Sign up <span class="btn__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <svg class="site-footer__rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="200" cy="200" r="70"/><circle cx="200" cy="200" r="115"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/></svg>
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="logo logo--on-dark" href="index.html">
+            <span class="logo__mark"><img src="assets/logo/logo.png" alt="" width="30" height="30"></span>
+            <span class="logo__text">Circlo</span>
+          </a>
+          <p class="site-footer__tagline">Sharing and disaster help for your neighborhood.</p>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 class="site-footer__heading" id="footer-explore">Explore</h2>
+          <ul class="site-footer__nav">
+            <li><a class="site-footer__link" href="index.html">Home</a></li>
+            <li><a class="site-footer__link" href="browse.html">Browse items</a></li>
+            <li><a class="site-footer__link" href="disaster-help.html">Disaster help</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-account">
+          <h2 class="site-footer__heading" id="footer-account">Your account</h2>
+          <ul class="site-footer__nav">
+            <li><a class="site-footer__link" href="login.html">Log in</a></li>
+            <li><a class="site-footer__link" href="signup.html">Sign up</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__note">
+          <svg class="site-footer__note-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4.5M10 13.75v.01"/></svg>
+          <p><strong>Circlo is not an emergency response service.</strong> If someone is in danger, call your local emergency number first.</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <p>© 2026 Circlo · A WS 101 community project</p>
+        <a class="site-footer__link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

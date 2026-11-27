@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study table · Circlo</title>
+  <meta name="description" content="A study table a neighbor is giving away in Zone 3.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: Browse items -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link is-active" aria-current="page" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M3 Item details — Detail template (DESIGN.md 6.2, 8.4).
+       Same as V3 with the member header, no footer, and the request button
+       going to M4 Request item (flow 4.2).
+       Sample item until data storage is decided (DESIGN.md 12.4 #1, #9). -->
+  <main id="main" class="page">
+    <div class="container">
+
+      <a class="back-link" href="browse.html"><span aria-hidden="true">←</span> Back to Browse items</a>
+
+      <div class="detail">
+        <div class="detail-photo" role="img" aria-label="Photo coming soon"></div>
+
+        <section class="info-panel" aria-labelledby="item-title">
+          <div class="info-panel__head">
+            <p class="eyebrow">Everyday sharing</p>
+            <h1 id="item-title">Study table</h1>
+          </div>
+          <span class="badge badge--success">Available</span>
+          <p>To give · Zone 3 · Qty 1</p>
+          <p class="lead">A sturdy wooden study table with one drawer, ready for a new home.</p>
+          <p class="info-panel__note">Posted by Liza Ramos · 25 Nov 2026</p>
+
+          <!-- M4 Request item (flow 4.2). Backend: pass the item, e.g. request-item.php?id=12
+               (DESIGN.md 12.4 #9). If the item is Reserved, show the button disabled
+               (aria-disabled="true") with a note that it is already reserved. -->
+          <a class="btn btn--primary" href="request-item.html">Request this item</a>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

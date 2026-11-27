@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Requests · Circlo</title>
+  <meta name="description" content="Answer requests for your items and follow the requests you sent.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: My activity -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link is-active" aria-current="page" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M9 Requests — Tabbed table template (DESIGN.md 6.2, 8.6). CRUD: Read / Update.
+       Two tables: requests for your items (Accept → Reserved, then Record handover;
+       Decline → Declined, flow 4.4) and requests you sent (flow 4.2 ends here).
+       Sample requests until data storage is decided (12.4 #1). No footer (7.2). -->
+  <main id="main" class="page">
+    <div class="container">
+
+      <div class="page-head">
+        <p class="eyebrow">My activity</p>
+        <h1>My activity</h1>
+        <p class="lead">Answer requests for your items and follow the ones you sent.</p>
+      </div>
+
+      <!-- Success messages (DESIGN.md 9.2). js/flash.js shows the one named in ?done=… -->
+      <div class="alert alert--success" role="status" data-flash="accepted" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Request accepted. The item is now Reserved. Record the handover when you meet.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="declined" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Request declined. The item stays Available to other neighbors.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="handover" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Handover saved. The request is now Completed.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="requested" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Your request is sent. The owner's answer will show here.</p>
+      </div>
+
+      <!-- Tabs (DESIGN.md 7.8). Active: Requests -->
+      <nav class="tabs" aria-label="My activity">
+        <ul class="tabs__list">
+          <li><a class="tabs__link" href="my-items.html">My items</a></li>
+          <li><a class="tabs__link" href="requests.html" aria-current="page">Requests</a></li>
+          <li><a class="tabs__link" href="handover.html">Handovers</a></li>
+          <li><a class="tabs__link" href="donations-reports.html">Donations and reports</a></li>
+        </ul>
+      </nav>
+
+      <!-- Requests for your items. Backend: each Accept / Decline form posts
+           "request_id" and "decision" (accept | decline). data-demo-next is for the
+           front-end demo only. Empty state when there are none:
+           <tr><td class="table__empty" colspan="6"><p>No one has requested your items yet.</p></td></tr> -->
+      <div class="page-head">
+        <h2 id="received-title">Requests for your items</h2>
+        <p class="lead">Accept to reserve the item for that neighbor, or decline.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table" aria-labelledby="received-title">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Requested by</th>
+              <th scope="col">Message</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__primary">Electric fan</td>
+              <td>Ana Cruz</td>
+              <td class="table__note">Can I borrow it for two weeks? Our fan broke.</td>
+              <td>26 Nov 2026</td>
+              <td><span class="badge badge--warning">Pending</span></td>
+              <td>
+                <div class="table__actions">
+                  <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=accepted">
+                    <input type="hidden" name="request_id" value="1">
+                    <input type="hidden" name="decision" value="accept">
+                    <button class="link" type="submit" data-loading-label="Accepting…" aria-label="Accept Ana Cruz's request for your Electric fan">Accept</button>
+                  </form>
+                  <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=declined">
+                    <input type="hidden" name="request_id" value="1">
+                    <input type="hidden" name="decision" value="decline">
+                    <button class="link" type="submit" data-loading-label="Declining…" aria-label="Decline Ana Cruz's request for your Electric fan">Decline</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table__primary">Study table</td>
+              <td>Jun Reyes</td>
+              <td class="table__note">For my son's schoolwork. I can pick it up this weekend.</td>
+              <td>25 Nov 2026</td>
+              <td><span class="badge badge--warning">Pending</span></td>
+              <td>
+                <div class="table__actions">
+                  <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=accepted">
+                    <input type="hidden" name="request_id" value="2">
+                    <input type="hidden" name="decision" value="accept">
+                    <button class="link" type="submit" data-loading-label="Accepting…" aria-label="Accept Jun Reyes's request for your Study table">Accept</button>
+                  </form>
+                  <form action="requests.html" method="post" data-validate data-demo-next="requests.html?done=declined">
+                    <input type="hidden" name="request_id" value="2">
+                    <input type="hidden" name="decision" value="decline">
+                    <button class="link" type="submit" data-loading-label="Declining…" aria-label="Decline Jun Reyes's request for your Study table">Decline</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table__primary">Baby clothes, bundle</td>
+              <td>Liza Ramos</td>
+              <td class="table__note">These would help a lot, thank you!</td>
+              <td>22 Nov 2026</td>
+              <td><span class="badge badge--success">Accepted</span></td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="handover.html" aria-label="Record the handover of your Baby clothes, bundle to Liza Ramos">Record handover</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table__primary">Plastic storage boxes</td>
+              <td>Carlo Diaz</td>
+              <td class="table__note">For our evacuation supplies.</td>
+              <td>18 Nov 2026</td>
+              <td><span class="badge badge--success">Completed</span></td>
+              <td>
+                <span class="table__note">No action needed</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Requests you sent. Empty state when there are none:
+           <tr><td class="table__empty" colspan="5"><p>You haven't requested any items yet.</p>
+           <a class="btn btn--secondary" href="browse.html">Browse items</a></td></tr> -->
+      <div class="page-head">
+        <h2 id="sent-title">Your requests</h2>
+        <p class="lead">Items you asked for, and what the owner said.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table" aria-labelledby="sent-title">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Owner</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__primary">Rice cooker</td>
+              <td>Paolo Lim</td>
+              <td>26 Nov 2026</td>
+              <td><span class="badge badge--warning">Pending</span></td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="item.html" aria-label="View Rice cooker">View item</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table__primary">Power drill</td>
+              <td>Ben Tan</td>
+              <td>20 Nov 2026</td>
+              <td><span class="badge badge--success">Accepted</span></td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="item.html" aria-label="View Power drill">View item</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="table__primary">Bookshelf</td>
+              <td>Rosa Uy</td>
+              <td>15 Nov 2026</td>
+              <td><span class="badge badge--neutral">Declined</span></td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="item.html" aria-label="View Bookshelf">View item</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/form-validate.js"></script>
+  <script src="../js/flash.js"></script>
+</body>
+</html>

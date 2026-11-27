@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ask for help · Circlo</title>
+  <meta name="description" content="Tell neighbors what your family needs after a disaster.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link is-active" aria-current="page" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+
+      <a class="back-link" href="disaster-help.html"><span aria-hidden="true">←</span> Back to Disaster help</a>
+
+      <div class="page-head">
+        <p class="eyebrow eyebrow--needs">Disaster help</p>
+        <h1>Ask for help</h1>
+        <p class="lead">Tell neighbors what your family needs. They can offer it on Disaster help.</p>
+      </div>
+
+      <div class="alert" role="note">
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 9v5M10 6h.01"/></svg>
+        <p>Circlo is not an emergency response service. If someone is in danger, call your local emergency number first.</p>
+      </div>
+
+      <div class="alert alert--error" role="alert" data-error-summary hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="alert__body">
+          <p class="alert__title"></p>
+          <ul class="alert__list"></ul>
+        </div>
+      </div>
+
+      <form class="form" action="ask-for-help.html" method="post" data-validate
+            data-demo-next="donations-reports.html?done=help">
+        <div class="field">
+          <label class="field__label" for="need">What do you need? (required)</label>
+          <input class="field__input" type="text" id="need" name="need" required maxlength="80"
+                 placeholder="e.g. Drinking water"
+                 aria-describedby="need-help need-error"
+                 data-error-required="Say what you need.">
+          <p class="field__help" id="need-help">Neighbors see this as the title of your request.</p>
+          <p class="field__error" id="need-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="quantity">How much or how many? (required)</label>
+          <input class="field__input" type="text" id="quantity" name="quantity" required maxlength="40"
+                 placeholder="e.g. 20 gallons"
+                 aria-describedby="quantity-error"
+                 data-error-required="Say how much you need.">
+          <p class="field__error" id="quantity-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="incident-type">Type of disaster (required)</label>
+          <select class="field__input" id="incident-type" name="incident_type" required
+                  aria-describedby="incident-type-error"
+                  data-error-required="Choose the type of disaster.">
+            <option value="">Select a type</option>
+            <option value="flood">Flood</option>
+            <option value="fire">Fire</option>
+            <option value="typhoon">Typhoon</option>
+            <option value="earthquake">Earthquake</option>
+            <option value="other">Other</option>
+          </select>
+          <p class="field__error" id="incident-type-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="people">People in your household (required)</label>
+          <input class="field__input" type="number" id="people" name="people" required
+                 min="1" max="99" inputmode="numeric"
+                 aria-describedby="people-error"
+                 data-error-required="Enter how many people need help."
+                 data-error-range="Enter a number from 1 to 99.">
+          <p class="field__error" id="people-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="location">Location (required)</label>
+          <select class="field__input" id="location" name="location" required
+                  aria-describedby="location-error"
+                  data-error-required="Choose your zone.">
+            <option value="">Select a zone</option>
+            <option value="zone-1">Zone 1</option>
+            <option value="zone-2">Zone 2</option>
+            <option value="zone-3">Zone 3</option>
+            <option value="zone-4">Zone 4</option>
+            <option value="zone-5">Zone 5</option>
+          </select>
+          <p class="field__error" id="location-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+        
+        <fieldset class="field field--group" aria-describedby="urgency-help urgency-error">
+          <legend class="field__legend">How urgent is it? (required)</legend>
+          <div class="field__choices">
+            <label class="choice" for="urgency-high">
+              <input type="radio" id="urgency-high" name="urgency" value="high" required
+                     data-error-required="Choose how urgent it is.">
+              High
+            </label>
+            <label class="choice" for="urgency-medium">
+              <input type="radio" id="urgency-medium" name="urgency" value="medium">
+              Medium
+            </label>
+            <label class="choice" for="urgency-low">
+              <input type="radio" id="urgency-low" name="urgency" value="low">
+              Low
+            </label>
+          </div>
+          <p class="field__help" id="urgency-help">High means you need it within a day.</p>
+          <p class="field__error" id="urgency-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </fieldset>
+
+        <div class="field field--long">
+          <label class="field__label" for="details">Details</label>
+          <textarea class="field__input" id="details" name="details" maxlength="500"
+                    aria-describedby="details-help"
+                    placeholder="e.g. Our water supply is cut. We have two small children."></textarea>
+          <p class="field__help" id="details-help">Optional. Anything that helps neighbors bring the right thing.</p>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--amber" type="submit" data-loading-label="Sending…">Send request for help</button>
+          <a class="btn btn--secondary" href="disaster-help.html">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <script src="../js/form-validate.js"></script>
+</body>
+</html>

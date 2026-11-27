@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Circlo — layout (DESIGN.md section 6 and section 10)
+   Containers, grids and page sections. Tokens only.
+   ========================================================================== */
+
+/* Container and grids (DESIGN.md 6.1) -------------------------------------- */
+.container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--space-20);
+  box-sizing: content-box;
+}
+
+.grid-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+.grid-needs { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-10); }
+.grid-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+
+/* Two feature blocks side by side (Marketing template) */
+.grid-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+
+/* Member home (M1): "Needs your attention" 8/12 + "Start something" 4/12 */
+.dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: var(--space-10);
+  align-items: start;
+  padding-bottom: var(--space-16);
+}
+
+/* Member home (M1) dashboard: sidebar card | stats and panels */
+.member-layout {
+  display: grid;
+  grid-template-columns: 272px minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: start;
+  padding-bottom: var(--space-16);
+}
+
+.member-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  min-width: 0;
+}
+
+/* Two panels side by side under the requests panel */
+.member-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+}
+
+/* Admin template (DESIGN.md 6.2, 8.9): sidebar 240 px | content, 40 px padding.
+   No footer. */
+.admin-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  min-height: calc(100vh - var(--header-height));
+}
+
+.admin-content {
+  min-width: 0;
+  padding: var(--space-10);
+}
+
+/* Grids are often lists of cards: remove list styling */
+ul.grid-items,
+ul.grid-needs,
+ul.grid-stats,
+ul.grid-features {
+  list-style: none;
+  padding: 0;
+}
+
+/* display: grid above would otherwise override the hidden attribute
+   (a filtered list with no matches, js/list-filter.js) */
+.grid-items[hidden],
+.grid-needs[hidden] {
+  display: none;
+}
+
+/* Marketing sections (DESIGN.md 5.3: 64 px between sections) --------------- */
+.section {
+  padding-block: var(--space-16);
+}
+
+.section--soft  { background-color: var(--color-surface-soft); }
+.section--needs { background-color: var(--color-needs-soft); }
+
+/* Detail template (DESIGN.md 6.2, 8.4): photo 7/12, info panel 5/12 ------- */
+.detail {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-10);
+  align-items: start;
+}
+
+/* App pages (List, Form, Tabbed table…): 40 px above and below the content
+   (DESIGN.md 5.3: "Between page sections … --space-10 (40) on app pages") */
+.page {
+  padding-block: var(--space-10);
+}
+
+/* Laptop: 1024–1279 px (DESIGN.md 10) -------------------------------------- */
+@media (max-width: 1279px) {
+  .container { padding-inline: var(--space-10); }
+
+  .grid-items { grid-template-columns: repeat(3, 1fr); }
+  .grid-needs { grid-template-columns: repeat(2, 1fr); }
+  .grid-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .detail { grid-template-columns: 1fr 1fr; }   /* 6/6 per DESIGN.md 10 */
+
+  .member-layout { grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-6); }
+  .member-split { grid-template-columns: 1fr; }
+}
+
+/* Small window fallback: below 1024 px (DESIGN.md 10) ---------------------- */
+@media (max-width: 1023px) {
+  .container { padding-inline: var(--space-6); }
+
+  .grid-items { grid-template-columns: repeat(2, 1fr); }
+  .grid-needs { grid-template-columns: 1fr; }
+  .dashboard { grid-template-columns: 1fr; }
+  .member-layout { grid-template-columns: 1fr; }
+  .grid-features { grid-template-columns: 1fr; }
+
+  /* Sidebar becomes a scrollable row above the content (DESIGN.md 10) */
+  .admin-layout { grid-template-columns: 1fr; }
+  .admin-content { padding: var(--space-6); }
+
+  .detail { grid-template-columns: 1fr; }
+}

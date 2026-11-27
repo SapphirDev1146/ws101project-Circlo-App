@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Offer donation · Circlo</title>
+  <meta name="description" content="Offer what you can to a family in need after a disaster.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: Disaster help -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link is-active" aria-current="page" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M14 Offer donation — Form template (DESIGN.md 6.2, 8.5). CRUD: Create.
+       Opened from "Offer help" on a need card (flow 4.5). Disaster form: amber
+       eyebrow and Amber main button. After offering: Donations and reports,
+       status Pending (9.3). Sample need until data storage is decided (12.4 #1, #9). -->
+  <main id="main" class="page">
+    <div class="container">
+
+      <a class="back-link" href="disaster-help.html"><span aria-hidden="true">←</span> Back to Disaster help</a>
+
+      <div class="page-head">
+        <p class="eyebrow eyebrow--needs">Disaster help</p>
+        <h1>Offer a donation</h1>
+        <p class="lead">Say what you can give. The family and an admin will see your offer.</p>
+      </div>
+
+      <!-- The need this offer answers: the same need card as on Disaster help (7.7),
+           without its button. Backend: show the need picked on M11. -->
+      <section class="form-context" aria-labelledby="need-title">
+        <h2 class="visually-hidden" id="need-title">The need you're helping with</h2>
+        <article class="need-card">
+          <span class="badge badge--danger">High urgency</span>
+          <h3>Food containers for evacuees</h3>
+          <p class="need-card__details">Flood · 20 people affected · Needs 40 containers</p>
+        </article>
+      </section>
+
+      <!-- Required note (DESIGN.md 7.2): members have no footer. Info alert (7.12). -->
+      <div class="alert" role="note">
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 9v5M10 6h.01"/></svg>
+        <p>Circlo is not an emergency response service. If someone is in danger, call your local emergency number first.</p>
+      </div>
+
+      <div class="alert alert--error" role="alert" data-error-summary hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="alert__body">
+          <p class="alert__title"></p>
+          <ul class="alert__list"></ul>
+        </div>
+      </div>
+
+      <!-- Backend: POST fields "need_id", "offer", "quantity", "delivery" (drop-off | pick-up),
+           "ready_date" and "note".
+           data-demo-next is for the front-end demo only: remove it when the backend saves the offer. -->
+      <form class="form" action="offer-donation.html" method="post" data-validate
+            data-demo-next="donations-reports.html?done=offered">
+        <input type="hidden" name="need_id" value="1">
+
+        <div class="field">
+          <label class="field__label" for="offer">What you're offering (required)</label>
+          <input class="field__input" type="text" id="offer" name="offer" required maxlength="80"
+                 placeholder="e.g. Plastic food containers with lids"
+                 aria-describedby="offer-error"
+                 data-error-required="Say what you're offering.">
+          <p class="field__error" id="offer-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="quantity">Quantity (required)</label>
+          <input class="field__input" type="number" id="quantity" name="quantity" required
+                 min="1" max="999" inputmode="numeric"
+                 aria-describedby="quantity-help quantity-error"
+                 data-error-required="Enter how many you can give."
+                 data-error-range="Enter a number from 1 to 999.">
+          <p class="field__help" id="quantity-help">Any amount helps. You don't have to cover the whole need.</p>
+          <p class="field__error" id="quantity-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <fieldset class="field field--group" aria-describedby="delivery-error">
+          <legend class="field__legend">How will it get there? (required)</legend>
+          <div class="field__choices">
+            <label class="choice" for="delivery-drop">
+              <input type="radio" id="delivery-drop" name="delivery" value="drop-off" required
+                     data-error-required="Choose how the donation gets there.">
+              I'll drop it off
+            </label>
+            <label class="choice" for="delivery-pickup">
+              <input type="radio" id="delivery-pickup" name="delivery" value="pick-up">
+              Please pick it up
+            </label>
+          </div>
+          <p class="field__error" id="delivery-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </fieldset>
+
+        <div class="field">
+          <label class="field__label" for="ready-date">Ready from (required)</label>
+          <input class="field__input" type="date" id="ready-date" name="ready_date" required
+                 aria-describedby="ready-date-error"
+                 data-error-required="Enter the first day it's ready.">
+          <p class="field__error" id="ready-date-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field field--long">
+          <label class="field__label" for="note">Note</label>
+          <textarea class="field__input" id="note" name="note" maxlength="300"
+                    aria-describedby="note-help"></textarea>
+          <p class="field__help" id="note-help">Optional. For example, the best time to reach you.</p>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--amber" type="submit" data-loading-label="Sending offer…">Offer donation</button>
+          <a class="btn btn--secondary" href="disaster-help.html">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <script src="../js/form-validate.js"></script>
+</body>
+</html>
