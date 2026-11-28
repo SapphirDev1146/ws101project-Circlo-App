@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review incident · Circlo admin</title>
+  <meta name="description" content="Check an incident report and set its status.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="../member/home.html">Home</a>
+      <a class="site-nav__link" href="../member/browse.html">Browse items</a>
+      <a class="site-nav__link" href="../member/disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="site-nav__link" href="../member/my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" aria-label="Admin">
+      <nav aria-label="Admin pages">
+        <ul class="admin-sidebar__list">
+          <li>
+            <a class="admin-sidebar__link" href="index.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg>
+              Overview
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="users.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.5"/><path d="M3.5 17a6.5 6.5 0 0 1 13 0"/></svg>
+              Users
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="categories.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7l7 7-7 7-7-7V3z"/><circle cx="7" cy="7" r="1"/></svg>
+              Categories
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="listings.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 10 3l7 3.5v7L10 17l-7-3.5v-7z"/><path d="M3 6.5 10 10l7-3.5M10 10v7"/></svg>
+              Item listings
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="incidents.html" aria-current="page">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 2.5 16.5h15L10 3z"/><path d="M10 8.5v3.5M10 14.25v.01"/></svg>
+              Incidents
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="assistance.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16.5S3 12.4 3 7.75A3.75 3.75 0 0 1 10 5.9a3.75 3.75 0 0 1 7 1.85c0 4.65-7 8.75-7 8.75z"/></svg>
+              Assistance requests
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="donations.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="9" rx="1"/><path d="M2.5 5.5h15V8h-15zM10 5.5V17"/><path d="M10 5.5C8.5 2.5 5.5 3 6.5 5.5M10 5.5c1.5-3 4.5-2.5 3.5 0"/></svg>
+              Donation offers
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="activity-log.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10a6.5 6.5 0 1 0 2-4.7"/><path d="M3 3v3.5h3.5"/><path d="M10 6.5V10l2.5 1.5"/></svg>
+              Activity log
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="main" class="admin-content">
+      <a class="back-link" href="incidents.html"><span aria-hidden="true">←</span> Back to Incidents</a>
+
+      <div class="page-head">
+        <p class="eyebrow">Admin</p>
+        <h1>Review incident</h1>
+        <p class="lead">Check the report, then set its status so members see the right information.</p>
+      </div>
+
+      <section class="info-panel form-context" aria-labelledby="report-title">
+        <div class="info-panel__head">
+          <h2 id="report-title">Flood in Zone 3</h2>
+        </div>
+        <span class="badge badge--neutral">Reported</span>
+        <dl class="detail-list">
+          <dt>Reported by</dt><dd>Maria Santos</dd>
+          <dt>Date</dt><dd>27 Nov 2026</dd>
+          <dt>Location</dt><dd>Zone 3</dd>
+          <dt>People affected</dt><dd>About 20</dd>
+        </dl>
+        <p>Floodwater reached knee height on Mabini Street. Six houses are flooded and families moved to the barangay hall.</p>
+        <p class="info-panel__note">Photo: none added.</p>
+      </section>
+
+      <div class="alert alert--error" role="alert" data-error-summary hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="alert__body">
+          <p class="alert__title"></p>
+          <ul class="alert__list"></ul>
+        </div>
+      </div>
+
+      <form class="form" action="review-incident.html" method="post" data-validate
+            data-demo-next="incidents.html?done=saved">
+        <input type="hidden" name="incident_id" value="1">
+
+        <fieldset class="field field--group" aria-describedby="status-help status-error">
+          <legend class="field__legend">New status (required)</legend>
+          <div class="field__choices">
+            <label class="choice" for="status-verified">
+              <input type="radio" id="status-verified" name="status" value="verified" required
+                     data-error-required="Choose a status for this report.">
+              Verified
+            </label>
+            <label class="choice" for="status-rejected">
+              <input type="radio" id="status-rejected" name="status" value="rejected">
+              Rejected
+            </label>
+            <label class="choice" for="status-resolved">
+              <input type="radio" id="status-resolved" name="status" value="resolved">
+              Resolved
+            </label>
+          </div>
+          <p class="field__help" id="status-help">Verified reports are shared on Disaster help. Rejected reports stay hidden.</p>
+          <p class="field__error" id="status-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </fieldset>
+
+        <div class="field field--long">
+          <label class="field__label" for="note">Note to the reporter</label>
+          <textarea class="field__input" id="note" name="note" maxlength="300" aria-describedby="note-help"></textarea>
+          <p class="field__help" id="note-help">Optional. Say why, especially if you reject the report.</p>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit" data-loading-label="Saving…">Save status</button>
+          <a class="btn btn--secondary" href="incidents.html">Cancel</a>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <script src="../js/form-validate.js"></script>
+</body>
+</html>

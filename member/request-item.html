@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request item · Circlo</title>
+  <meta name="description" content="Ask a neighbor for an item they are giving or lending.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: Browse items -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link is-active" aria-current="page" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M4 Request item — Form template (DESIGN.md 6.2, 8.5). CRUD: Create.
+       Opened from "Request this item" on M3 (flow 4.2). After sending: Requests,
+       with the item's request Pending. Sample item until data storage is decided (12.4 #1, #9). -->
+  <main id="main" class="page">
+    <div class="container">
+
+      <a class="back-link" href="item.html"><span aria-hidden="true">←</span> Back to Study table</a>
+
+      <div class="page-head">
+        <p class="eyebrow">Everyday sharing</p>
+        <h1>Request this item</h1>
+        <p class="lead">Send Liza Ramos a short message to ask for it.</p>
+      </div>
+
+      <!-- The item being requested: the same item card as Browse items (7.6) -->
+      <section class="form-context" aria-labelledby="item-title">
+        <h2 class="visually-hidden" id="item-title">The item you're requesting</h2>
+        <a class="item-card item-card--row" href="item.html">
+          <div class="item-card__photo" role="img" aria-label="Photo coming soon"></div>
+          <div class="item-card__body">
+            <h3 class="item-card__title">Study table</h3>
+            <p class="item-card__meta">To give · Zone 3 · Posted by Liza Ramos</p>
+            <span class="badge badge--success">Available</span>
+          </div>
+        </a>
+      </section>
+
+      <div class="alert alert--error" role="alert" data-error-summary hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="alert__body">
+          <p class="alert__title"></p>
+          <ul class="alert__list"></ul>
+        </div>
+      </div>
+
+      <!-- Backend: POST fields "item_id", "message" and "pickup_date".
+           data-demo-next is for the front-end demo only: remove it when the backend saves the request. -->
+      <form class="form" action="request-item.html" method="post" data-validate
+            data-demo-next="requests.html?done=requested">
+        <input type="hidden" name="item_id" value="1">
+
+        <div class="field field--long">
+          <label class="field__label" for="message">Message to Liza Ramos (required)</label>
+          <textarea class="field__input" id="message" name="message" required minlength="10" maxlength="300"
+                    aria-describedby="message-help message-error"
+                    data-error-required="Write a short message to the owner."
+                    data-error-minlength="Write at least 10 characters."
+                    placeholder="e.g. Hi! I'd love this for my son's schoolwork. I can pick it up this weekend."></textarea>
+          <p class="field__help" id="message-help">Say why you need it and when you could pick it up.</p>
+          <p class="field__error" id="message-error" hidden>
+            <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="field__error-text"></span>
+          </p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="pickup-date">Earliest pick-up date</label>
+          <input class="field__input" type="date" id="pickup-date" name="pickup_date"
+                 aria-describedby="pickup-date-help">
+          <p class="field__help" id="pickup-date-help">Optional. You'll agree on the exact time with the owner.</p>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn btn--primary" type="submit" data-loading-label="Sending…">Send request</button>
+          <a class="btn btn--secondary" href="item.html">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <script src="../js/form-validate.js"></script>
+</body>
+</html>

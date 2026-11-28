@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My items · Circlo</title>
+  <meta name="description" content="See and manage the items you shared on Circlo.">
+
+  <!-- Fonts (DESIGN.md 5.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <!-- Order matters (DESIGN.md 3.2) -->
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Member header (DESIGN.md 7.1). Active: My activity -->
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link is-active" aria-current="page" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <!-- M6 My items — Tabbed table template (DESIGN.md 6.2, 8.6). CRUD: Read.
+       Page head → tabs → toolbar → table. No footer for members (7.2). -->
+  <main id="main" class="page">
+    <div class="container">
+
+      <div class="page-head">
+        <p class="eyebrow">My activity</p>
+        <h1>My activity</h1>
+        <p class="lead">See and manage the items you shared.</p>
+      </div>
+
+      <!-- Success messages after Post item (M5), Edit item (M7) and Remove item (M8)
+           (DESIGN.md 9.2). js/flash.js shows the one named in ?done=posted|saved|removed. -->
+      <div class="alert alert--success" role="status" data-flash="posted" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Your item is posted.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="saved" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Changes saved.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="removed" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Item removed. It's hidden from Browse items, and the record is kept.</p>
+      </div>
+
+      <!-- Tabs (DESIGN.md 7.8): links to separate pages. Active: My items -->
+      <nav class="tabs" aria-label="My activity">
+        <ul class="tabs__list">
+          <li><a class="tabs__link" href="my-items.html" aria-current="page">My items</a></li>
+          <li><a class="tabs__link" href="requests.html">Requests</a></li>
+          <li><a class="tabs__link" href="handover.html">Handovers</a></li>
+          <li><a class="tabs__link" href="donations-reports.html">Donations and reports</a></li>
+        </ul>
+      </nav>
+
+      <!-- Toolbar (DESIGN.md 7.12): search + status filter + the page's one main button.
+           GET keeps the filters in the URL: my-items.html?q=&status=
+           js/list-filter.js filters the table rows with the same parameters. -->
+      <form class="toolbar" role="search" action="my-items.html" method="get" aria-label="Search my items" data-filter-form="my-items-rows">
+        <div class="field toolbar__search">
+          <label class="field__label" for="q">Search my items</label>
+          <input class="field__input" type="search" id="q" name="q" placeholder="e.g. Electric fan">
+        </div>
+        <div class="field toolbar__filter">
+          <label class="field__label" for="status">Status</label>
+          <select class="field__input" id="status" name="status">
+            <option value="">All statuses</option>
+            <option value="available">Available</option>
+            <option value="reserved">Reserved</option>
+            <option value="given">Given</option>
+            <option value="lent">Lent</option>
+          </select>
+        </div>
+        <button class="btn btn--secondary" type="submit">Search</button>
+        <a class="btn btn--primary toolbar__action" href="post-item.html">Post an item</a>
+      </form>
+
+      <!-- Table (DESIGN.md 7.9). Sample items until data storage is decided (12.4 #1).
+           Status uses words in a select so the owner can change it (Update, lifecycle 9.3).
+           Backend: save the new status when the select changes, then show ?done=saved.
+           data-status / data-type match the toolbar filter values. -->
+      <p class="visually-hidden" role="status" data-filter-status="my-items-rows"></p>
+      <div class="table-wrap">
+        <table class="table">
+          <caption class="visually-hidden">Items you shared</caption>
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Listing type</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="my-items-rows" data-filter-list data-filter-noun="item">
+            <tr data-status="available" data-type="give">
+              <td class="table__primary" data-filter-text>Study table</td>
+              <td>To give</td>
+              <td>1</td>
+              <td>
+                <label class="visually-hidden" for="status-1">Status of Study table</label>
+                <select class="field__input" id="status-1" name="status-1">
+                  <option value="available" selected>Available</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="given">Given</option>
+                </select>
+              </td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="edit-item.html" aria-label="Edit Study table">Edit</a>
+                  <a class="link link--danger" href="remove-item.html" aria-label="Remove Study table">Remove</a>
+                </div>
+              </td>
+            </tr>
+            <tr data-status="available" data-type="lend">
+              <td class="table__primary" data-filter-text>Electric fan</td>
+              <td>To lend</td>
+              <td>1</td>
+              <td>
+                <label class="visually-hidden" for="status-2">Status of Electric fan</label>
+                <select class="field__input" id="status-2" name="status-2">
+                  <option value="available" selected>Available</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="lent">Lent</option>
+                </select>
+              </td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="edit-item.html" aria-label="Edit Electric fan">Edit</a>
+                  <a class="link link--danger" href="remove-item.html" aria-label="Remove Electric fan">Remove</a>
+                </div>
+              </td>
+            </tr>
+            <tr data-status="reserved" data-type="give">
+              <td class="table__primary" data-filter-text>Baby clothes, bundle</td>
+              <td>To give</td>
+              <td>1</td>
+              <td>
+                <label class="visually-hidden" for="status-3">Status of Baby clothes, bundle</label>
+                <select class="field__input" id="status-3" name="status-3">
+                  <option value="available">Available</option>
+                  <option value="reserved" selected>Reserved</option>
+                  <option value="given">Given</option>
+                </select>
+              </td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="edit-item.html" aria-label="Edit Baby clothes, bundle">Edit</a>
+                  <a class="link link--danger" href="remove-item.html" aria-label="Remove Baby clothes, bundle">Remove</a>
+                </div>
+              </td>
+            </tr>
+            <tr data-status="lent" data-type="lend">
+              <td class="table__primary" data-filter-text>Umbrellas</td>
+              <td>To lend</td>
+              <td>2</td>
+              <td>
+                <label class="visually-hidden" for="status-4">Status of Umbrellas</label>
+                <select class="field__input" id="status-4" name="status-4">
+                  <option value="available">Available</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="lent" selected>Lent</option>
+                </select>
+              </td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="edit-item.html" aria-label="Edit Umbrellas">Edit</a>
+                  <a class="link link--danger" href="remove-item.html" aria-label="Remove Umbrellas">Remove</a>
+                </div>
+              </td>
+            </tr>
+            <tr data-status="given" data-type="give">
+              <td class="table__primary" data-filter-text>Plastic storage boxes</td>
+              <td>To give</td>
+              <td>3</td>
+              <td>
+                <label class="visually-hidden" for="status-5">Status of Plastic storage boxes</label>
+                <select class="field__input" id="status-5" name="status-5">
+                  <option value="available">Available</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="given" selected>Given</option>
+                </select>
+              </td>
+              <td>
+                <div class="table__actions">
+                  <a class="link" href="edit-item.html" aria-label="Edit Plastic storage boxes">Edit</a>
+                  <a class="link link--danger" href="remove-item.html" aria-label="Remove Plastic storage boxes">Remove</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+          <!-- Empty state (DESIGN.md 7.9). Backend: when the member has no items, show this
+               instead of the rows above:
+          <tbody>
+            <tr>
+              <td class="table__empty" colspan="5">
+                <p>You haven't posted any items yet.</p>
+                <a class="btn btn--secondary" href="post-item.html">Post an item</a>
+              </td>
+            </tr>
+          </tbody>
+          -->
+        </table>
+      </div>
+
+      <!-- No matches for the search or filter (DESIGN.md 7.12) -->
+      <div class="empty-state" data-filter-empty="my-items-rows" hidden>
+        <p class="lead">None of your items match your search.</p>
+        <a class="btn btn--secondary" href="my-items.html">Clear filters</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/list-filter.js"></script>
+  <script src="../js/flash.js"></script>
+</body>
+</html>

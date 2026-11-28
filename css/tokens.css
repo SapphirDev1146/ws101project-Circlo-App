@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Circlo — design tokens (DESIGN.md section 5)
+   Variables only. No selectors other than :root.
+   This is the ONLY file allowed to contain hex colours.
+   ========================================================================== */
+
+/* 5.1 Colour ---------------------------------------------------------------- */
+:root {
+  /* Brand and roles */
+  --color-primary:        #166534; /* main buttons, links, everyday sharing */
+  --color-primary-hover:  #14532D;
+  --color-needs:          #B45309; /* disaster help buttons and labels (white text 5.0:1) */
+  --color-needs-hover:    #92400E;
+  --color-danger:         #B91C1C; /* high urgency, errors, remove actions */
+  --color-danger-hover:   #991B1B;
+
+  /* Surfaces */
+  --color-bg:             #FAFAF9; /* page background */
+  --color-surface:        #FFFFFF; /* cards, header, tables, inputs */
+  --color-surface-soft:   #F0FDF4; /* green sections, hero, active nav pill, table header */
+  --color-needs-soft:     #FFF7ED; /* disaster sections */
+  --color-danger-soft:    #FEF2F2; /* error backgrounds (use sparingly) */
+
+  /* Text and lines */
+  --color-text:           #1C1917;
+  --color-text-muted:     #57534E;
+  --color-text-on-color:  #FFFFFF;
+  --color-border:         #D6D3D1;
+  --color-neutral-soft:   #F5F5F4; /* neutral badge background (value from DESIGN.md 7.4) */
+
+  /* Behind an open dialog (text colour at 50%) */
+  --color-overlay:        rgba(28, 25, 23, 0.5);
+
+  /* On the deep green footer and the green call-to-action panel
+     (white at 78% on Primary hover: 7.9:1; lines at 18%) */
+  --color-on-dark-muted:  rgba(255, 255, 255, 0.78);
+  --color-on-dark-line:   rgba(255, 255, 255, 0.18);
+  --color-on-dark-soft:   rgba(255, 255, 255, 0.08);
+
+  /* Logo only — never use for UI */
+  --color-logo-green:     #216339;
+  --color-logo-orange:    #E78218;
+}
+
+/* 5.2 Typography ------------------------------------------------------------ */
+/* Fonts (Google Fonts): Bricolage Grotesque 600, Atkinson Hyperlegible 400/700 */
+:root {
+  --font-heading: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body:    "Atkinson Hyperlegible", system-ui, sans-serif;
+
+  /* Weights */
+  --font-weight-regular: 400;
+  --font-weight-heading: 600;
+  --font-weight-bold:    700;
+
+  /* Type scale: --text-* = font size, --leading-* = line height (16px = 1rem) */
+  --text-display: 3.5rem;      --leading-display: 4rem;      /* 56 / 64 — home hero only */
+  --text-h1:      2.25rem;     --leading-h1:      2.75rem;   /* 36 / 44 — page title */
+  --text-h2:      1.75rem;     --leading-h2:      2.25rem;   /* 28 / 36 — section title */
+  --text-h3:      1.25rem;     --leading-h3:      1.75rem;   /* 20 / 28 — card and panel titles */
+  --text-stat:    2.5rem;      --leading-stat:    3rem;      /* 40 / 48 — stat card numbers */
+  --text-lead:    1.125rem;    --leading-lead:    1.75rem;   /* 18 / 28 — intro sentence */
+  --text-body:    1rem;        --leading-body:    1.5rem;    /* 16 / 24 — default, inputs, nav */
+  --text-small:   0.875rem;    --leading-small:   1.25rem;   /* 14 / 20 — tables, meta, helper */
+  --text-eyebrow: 0.8125rem;   --leading-eyebrow: 1rem;      /* 13 / 16 — uppercase label, 700 */
+  --text-button:  1rem;        --leading-button:  1.5rem;    /* 16 / 24 — buttons, active nav, 700 */
+
+  /* Letter spacing */
+  --tracking-display: -0.02em;
+  --tracking-eyebrow: 0.08em;
+}
+
+/* Hero display shrinks below 1024 px (DESIGN.md section 10: 56 → 44 px) */
+@media (max-width: 1023px) {
+  :root {
+    --text-display: 2.75rem;   --leading-display: 3.25rem; /* 44 / 52 */
+  }
+}
+
+/* 5.3 Spacing (8 px grid) --------------------------------------------------- */
+:root {
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+}
+
+/* 5.4 Radius, borders, shadows, sizes --------------------------------------- */
+:root {
+  --radius-sm: 6px;    /* badges */
+  --radius-md: 8px;    /* buttons, inputs, nav pills */
+  --radius-lg: 12px;   /* cards, tables, panels */
+  --radius-xl: 20px;   /* home hero photo, feature panels, call-to-action panel */
+  --radius-full: 999px;
+
+  --border: 1px solid var(--color-border);
+  --shadow-card: 0 1px 2px rgba(28, 25, 23, 0.06);
+  --shadow-raised: 0 4px 12px rgba(28, 25, 23, 0.08); /* hover on clickable cards only */
+  --shadow-float: 0 16px 40px -12px rgba(28, 25, 23, 0.22), 0 2px 6px rgba(28, 25, 23, 0.06); /* hero preview cards */
+
+  /* Motion (DESIGN.md 9.1): strong ease-out, short durations */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-fast: 150ms;    /* colour, shadow */
+  --duration-press: 160ms;   /* press and lift */
+  --duration-enter: 640ms;   /* home hero entrance, once on load */
+
+  --header-height: 88px;
+  --sidebar-width: 240px;
+  --content-max: 1280px;     /* 1440 − 2 × 80 */
+  --auth-max: 440px;         /* Auth form card, V5 / V6 (DESIGN.md 6.2) */
+  --form-max: 640px;         /* Form template column (DESIGN.md 6.2) */
+  --confirm-max: 560px;      /* Confirm panel, M8 (DESIGN.md 6.2) */
+  --field-max: 400px;        /* Field width in forms (DESIGN.md 7.5) */
+  --icon-size: 20px;         /* Icons, radios and checkboxes (DESIGN.md 5.5) */
+  --control-height: 48px;    /* buttons and inputs */
+  --tap-min: 44px;           /* minimum click area for links */
+
+  --focus-ring: 0 0 0 3px #FFFFFF, 0 0 0 5px var(--color-primary);
+}

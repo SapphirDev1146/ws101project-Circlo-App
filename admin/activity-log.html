@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Activity log · Circlo admin</title>
+  <meta name="description" content="See what members and admins did, newest first.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="../member/home.html">Home</a>
+      <a class="site-nav__link" href="../member/browse.html">Browse items</a>
+      <a class="site-nav__link" href="../member/disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="site-nav__link" href="../member/my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar" aria-label="Admin">
+      <nav aria-label="Admin pages">
+        <ul class="admin-sidebar__list">
+          <li>
+            <a class="admin-sidebar__link" href="index.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg>
+              Overview
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="users.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.5"/><path d="M3.5 17a6.5 6.5 0 0 1 13 0"/></svg>
+              Users
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="categories.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7l7 7-7 7-7-7V3z"/><circle cx="7" cy="7" r="1"/></svg>
+              Categories
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="listings.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 10 3l7 3.5v7L10 17l-7-3.5v-7z"/><path d="M3 6.5 10 10l7-3.5M10 10v7"/></svg>
+              Item listings
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="incidents.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 2.5 16.5h15L10 3z"/><path d="M10 8.5v3.5M10 14.25v.01"/></svg>
+              Incidents
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="assistance.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16.5S3 12.4 3 7.75A3.75 3.75 0 0 1 10 5.9a3.75 3.75 0 0 1 7 1.85c0 4.65-7 8.75-7 8.75z"/></svg>
+              Assistance requests
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="donations.html">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="9" rx="1"/><path d="M2.5 5.5h15V8h-15zM10 5.5V17"/><path d="M10 5.5C8.5 2.5 5.5 3 6.5 5.5M10 5.5c1.5-3 4.5-2.5 3.5 0"/></svg>
+              Donation offers
+            </a>
+          </li>
+          <li>
+            <a class="admin-sidebar__link" href="activity-log.html" aria-current="page">
+              <svg class="admin-sidebar__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10a6.5 6.5 0 1 0 2-4.7"/><path d="M3 3v3.5h3.5"/><path d="M10 6.5V10l2.5 1.5"/></svg>
+              Activity log
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="main" class="admin-content">
+      <div class="page-head">
+        <p class="eyebrow">Admin</p>
+        <h1>Activity log</h1>
+        <p class="lead">See what members and admins did on Circlo, newest first.</p>
+      </div>
+
+      <form class="toolbar" role="search" method="get" aria-label="Search the log" data-filter-form="log-rows">
+        <div class="field toolbar__search">
+          <label class="field__label" for="q">Search the log</label>
+          <input class="field__input" type="search" id="q" name="q" placeholder="e.g. Maria or Deactivated">
+        </div>
+        <div class="field toolbar__filter">
+          <label class="field__label" for="area">Area</label>
+          <select class="field__input" id="area" name="area">
+            <option value="">All areas</option>
+            <option value="items">Items</option>
+            <option value="requests">Requests</option>
+            <option value="incidents">Incidents</option>
+            <option value="donations">Donations</option>
+            <option value="admin">Admin actions</option>
+          </select>
+        </div>
+        <button class="btn btn--secondary" type="submit">Search</button>
+      </form>
+      <p class="visually-hidden" role="status" data-filter-status="log-rows"></p>
+
+      <div class="table-wrap">
+        <table class="table">
+          <caption class="visually-hidden">Activity log</caption>
+          <thead>
+            <tr>
+              <th scope="col">When</th>
+              <th scope="col">Who</th>
+              <th scope="col">Action</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody id="log-rows" data-filter-list data-filter-noun="entry">
+            <tr data-area="items">
+              <td>27 Nov 2026, 9:14</td>
+              <td class="table__primary" data-filter-text>Maria Santos</td>
+              <td data-filter-text>Posted an item</td>
+              <td class="table__note" data-filter-text>Desk lamp</td>
+            </tr>
+            <tr data-area="admin">
+              <td>27 Nov 2026, 8:40</td>
+              <td class="table__primary" data-filter-text>Liza Ramos</td>
+              <td data-filter-text>Changed a status</td>
+              <td class="table__note" data-filter-text>Food containers for evacuees → In progress</td>
+            </tr>
+            <tr data-area="requests">
+              <td>26 Nov 2026, 18:02</td>
+              <td class="table__primary" data-filter-text>Ana Cruz</td>
+              <td data-filter-text>Requested an item</td>
+              <td class="table__note" data-filter-text>Electric fan</td>
+            </tr>
+            <tr data-area="donations">
+              <td>26 Nov 2026, 16:30</td>
+              <td class="table__primary" data-filter-text>Jun Reyes</td>
+              <td data-filter-text>Offered a donation</td>
+              <td class="table__note" data-filter-text>15 food containers</td>
+            </tr>
+            <tr data-area="incidents">
+              <td>26 Nov 2026, 11:05</td>
+              <td class="table__primary" data-filter-text>Ben Tan</td>
+              <td data-filter-text>Reported an incident</td>
+              <td class="table__note" data-filter-text>Fire · Zone 4</td>
+            </tr>
+            <tr data-area="admin">
+              <td>25 Nov 2026, 20:12</td>
+              <td class="table__primary" data-filter-text>Liza Ramos</td>
+              <td data-filter-text>Verified an incident</td>
+              <td class="table__note" data-filter-text>Flood · Zone 3</td>
+            </tr>
+            <tr data-area="admin">
+              <td>25 Nov 2026, 14:47</td>
+              <td class="table__primary" data-filter-text>Liza Ramos</td>
+              <td data-filter-text>Deactivated a user</td>
+              <td class="table__note" data-filter-text>Carlo Diaz</td>
+            </tr>
+            <tr data-area="items">
+              <td>24 Nov 2026, 10:20</td>
+              <td class="table__primary" data-filter-text>Maria Santos</td>
+              <td data-filter-text>Removed an item</td>
+              <td class="table__note" data-filter-text>Old bookshelf</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="empty-state" data-filter-empty="log-rows" hidden>
+        <p class="lead">No entries match your search.</p>
+        <a class="btn btn--secondary" href="activity-log.html">Clear filters</a>
+      </div>
+
+      <nav class="pagination" aria-label="Pagination">
+        <ul class="pagination__list">
+          <li><span class="pagination__link" aria-disabled="true">‹ Previous</span></li>
+          <li><a class="pagination__link" href="activity-log.html?page=1" aria-current="page" aria-label="Page 1">1</a></li>
+          <li><a class="pagination__link" href="activity-log.html?page=2" aria-label="Page 2">2</a></li>
+          <li><a class="pagination__link" href="activity-log.html?page=2">Next ›</a></li>
+        </ul>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../js/list-filter.js"></script>
+</body>
+</html>

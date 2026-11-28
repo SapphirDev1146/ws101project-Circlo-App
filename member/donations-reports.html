@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donations and reports · Circlo</title>
+  <meta name="description" content="Follow your incident reports, requests for help and donation offers.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="home.html">
+      <span class="logo__mark"><img src="../assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="home.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="btn btn--primary" href="post-item.html">Post item</a>
+      <a class="site-nav__link is-active" aria-current="page" href="my-items.html">My activity</a>
+      <a class="site-nav__link site-nav__link--strong" href="../index.html">Log out</a>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+
+      <div class="page-head">
+        <p class="eyebrow">My activity</p>
+        <h1>My activity</h1>
+        <p class="lead">Follow your incident reports, requests for help and donation offers.</p>
+      </div>
+
+      <div class="alert alert--success" role="status" data-flash="reported" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Your report is sent. Its status is Reported until an admin checks it.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="help" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Your request for help is sent. Its status is Pending.</p>
+      </div>
+      <div class="alert alert--success" role="status" data-flash="offered" hidden>
+        <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="m6.5 10.25 2.25 2.25 4.75-4.75"/></svg>
+        <p>Thank you. Your donation offer is sent. Its status is Pending.</p>
+      </div>
+
+      <nav class="tabs" aria-label="My activity">
+        <ul class="tabs__list">
+          <li><a class="tabs__link" href="my-items.html">My items</a></li>
+          <li><a class="tabs__link" href="requests.html">Requests</a></li>
+          <li><a class="tabs__link" href="handover.html">Handovers</a></li>
+          <li><a class="tabs__link" href="donations-reports.html" aria-current="page">Donations and reports</a></li>
+        </ul>
+      </nav>
+
+      <div class="page-head">
+        <h2 id="reports-title">Your incident reports</h2>
+        <p class="lead">An admin checks each report before it's shared.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table" aria-labelledby="reports-title">
+          <thead>
+            <tr>
+              <th scope="col">Incident</th>
+              <th scope="col">Location</th>
+              <th scope="col">Date reported</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__primary">Flood</td>
+              <td>Zone 3</td>
+              <td>24 Nov 2026</td>
+              <td><span class="badge badge--success">Verified</span></td>
+            </tr>
+            <tr>
+              <td class="table__primary">Fire</td>
+              <td>Zone 2</td>
+              <td>10 Nov 2026</td>
+              <td><span class="badge badge--success">Resolved</span></td>
+            </tr>
+            <tr>
+              <td class="table__primary">Typhoon damage</td>
+              <td>Zone 1</td>
+              <td>2 Nov 2026</td>
+              <td><span class="badge badge--danger">Rejected</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="page-head">
+        <h2 id="help-title">Your requests for help</h2>
+        <p class="lead">What you asked neighbors for after a disaster.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table" aria-labelledby="help-title">
+          <thead>
+            <tr>
+              <th scope="col">What you need</th>
+              <th scope="col">Incident</th>
+              <th scope="col">Date asked</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__primary">Drinking water for 4 people</td>
+              <td>Typhoon</td>
+              <td>27 Nov 2026</td>
+              <td><span class="badge badge--warning">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="table__primary">Blankets for 3 children</td>
+              <td>Fire</td>
+              <td>11 Nov 2026</td>
+              <td><span class="badge badge--success">Resolved</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="page-head">
+        <h2 id="offers-title">Your donation offers</h2>
+        <p class="lead">What you offered to families in need.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table" aria-labelledby="offers-title">
+          <thead>
+            <tr>
+              <th scope="col">What you offered</th>
+              <th scope="col">For</th>
+              <th scope="col">Date offered</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="table__primary">10 blankets</td>
+              <td>Blankets for a family of 8</td>
+              <td>26 Nov 2026</td>
+              <td><span class="badge badge--warning">Pending</span></td>
+            </tr>
+            <tr>
+              <td class="table__primary">20 food containers</td>
+              <td>Food containers for evacuees</td>
+              <td>21 Nov 2026</td>
+              <td><span class="badge badge--success">Accepted</span></td>
+            </tr>
+            <tr>
+              <td class="table__primary">5 school kits</td>
+              <td>School supplies for children</td>
+              <td>12 Nov 2026</td>
+              <td><span class="badge badge--success">Delivered</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="section-note">Circlo is not an emergency response service. If someone is in danger, call your local emergency number first.</p>
+
+    </div>
+  </main>
+
+  <script src="../js/flash.js"></script>
+</body>
+</html>

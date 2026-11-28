@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in · Circlo</title>
+  <meta name="description" content="Log in to Circlo to request, post and donate items.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo__mark"><img src="assets/logo/logo.png" alt="" width="30" height="30"></span>
+      <span class="logo__text">Circlo</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="site-nav__link" href="index.html">Home</a>
+      <a class="site-nav__link" href="browse.html">Browse items</a>
+      <a class="site-nav__link" href="disaster-help.html">Disaster help</a>
+    </nav>
+    <div class="account-nav">
+      <a class="site-nav__link" href="login.html">Log in</a>
+      <a class="btn btn--primary" href="signup.html">Sign up</a>
+    </div>
+  </header>
+
+  <main id="main" class="page">
+    <div class="container">
+      <section class="auth-card" aria-labelledby="login-title">
+
+        <div class="page-head">
+          <h1 id="login-title">Log in</h1>
+          <p class="lead">Welcome back. Log in to request, post and donate.</p>
+        </div>
+
+        <div class="alert alert--error" role="alert" data-error-summary hidden>
+          <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div class="alert__body">
+            <p class="alert__title"></p>
+            <ul class="alert__list"></ul>
+          </div>
+        </div>
+
+        <div class="alert" role="note">
+          <svg class="alert__icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 9v5M10 6h.01"/></svg>
+          <p>Demo: log in with admin@circlo.test to see the admin pages. Any other email opens the member pages. Any password works.</p>
+        </div>
+
+        <form class="auth-card__form" action="login.html" method="post" data-validate
+              data-demo-next="member/home.html"
+              data-demo-admin-email="admin@circlo.test" data-demo-admin-next="admin/index.html">
+          <div class="field">
+            <label class="field__label" for="email">Email (required)</label>
+            <input class="field__input" type="email" id="email" name="email" required
+                   autocomplete="email" placeholder="e.g. maria@example.com"
+                   aria-describedby="email-error"
+                   data-error-required="Enter your email."
+                   data-error-email="Enter an email like maria@example.com.">
+            <p class="field__error" id="email-error" hidden>
+              <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="field__error-text"></span>
+            </p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="password">Password (required)</label>
+            <input class="field__input" type="password" id="password" name="password" required
+                   autocomplete="current-password"
+                   aria-describedby="password-error"
+                   data-error-required="Enter your password.">
+            <p class="field__error" id="password-error" hidden>
+              <svg class="field__error-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v5M10 14h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span class="field__error-text"></span>
+            </p>
+          </div>
+
+          <button class="btn btn--primary" type="submit" data-loading-label="Logging in…">Log in</button>
+        </form>
+
+        <p class="auth-card__switch">No account yet? <a class="link" href="signup.html">Sign up</a></p>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <svg class="site-footer__rings" viewBox="0 0 400 400" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="200" cy="200" r="70"/><circle cx="200" cy="200" r="115"/><circle cx="200" cy="200" r="158"/><circle cx="200" cy="200" r="198"/></svg>
+    <div class="container">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="logo logo--on-dark" href="index.html">
+            <span class="logo__mark"><img src="assets/logo/logo.png" alt="" width="30" height="30"></span>
+            <span class="logo__text">Circlo</span>
+          </a>
+          <p class="site-footer__tagline">Sharing and disaster help for your neighborhood.</p>
+        </div>
+        <nav aria-labelledby="footer-explore">
+          <h2 class="site-footer__heading" id="footer-explore">Explore</h2>
+          <ul class="site-footer__nav">
+            <li><a class="site-footer__link" href="index.html">Home</a></li>
+            <li><a class="site-footer__link" href="browse.html">Browse items</a></li>
+            <li><a class="site-footer__link" href="disaster-help.html">Disaster help</a></li>
+          </ul>
+        </nav>
+        <nav aria-labelledby="footer-account">
+          <h2 class="site-footer__heading" id="footer-account">Your account</h2>
+          <ul class="site-footer__nav">
+            <li><a class="site-footer__link" href="login.html">Log in</a></li>
+            <li><a class="site-footer__link" href="signup.html">Sign up</a></li>
+          </ul>
+        </nav>
+        <div class="site-footer__note">
+          <svg class="site-footer__note-icon" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4.5M10 13.75v.01"/></svg>
+          <p><strong>Circlo is not an emergency response service.</strong> If someone is in danger, call your local emergency number first.</p>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <p>© 2026 Circlo · A WS 101 community project</p>
+        <a class="site-footer__link" href="#main">Back to top <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/form-validate.js"></script>
+</body>
+</html>
